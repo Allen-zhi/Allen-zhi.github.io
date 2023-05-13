@@ -16,24 +16,24 @@
   <meta name="author" content="Allen-zhi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Lcdc数字视频的基本概念源自于模拟视频。对于模拟视频我们可以这样理解：视频可以分解为若干个基本视点（像素），每个像素都有独立的色彩信息，在屏幕上依次将 这些点用电子枪按照行和列打出来，就形成了一幅完整画面，连续的打出画面，利用人眼的延迟特点就可以“显示”动态的图像了。 水平消隐：电子枪从左到右画出象素，它每次只能画一条扫描线，画下一条之前要先回到左边并做好画下一条扫描线的准备，这之间有一段时间叫">
+    <meta name="description" content="极限性能 echo performance | tee $(find &#x2F;sys |grep governor$)# 打开性能模式export KMSSINK_DISABLE_VSYNC&#x3D;1 #关闭vsyncecho 400000000 &gt; sys&#x2F;kernel&#x2F;debug&#x2F;clk&#x2F;aclk_rkvdec&#x2F;clk_rate">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lcdc">
-<meta property="og:url" content="http://example.com/2023/03/08/Lcdc/index.html">
+<meta property="og:title" content="gstreamer">
+<meta property="og:url" content="http://example.com/2023/05/13/gstreamer/index.html">
 <meta property="og:site_name" content="Maxwell&#39;s blog">
-<meta property="og:description" content="Lcdc数字视频的基本概念源自于模拟视频。对于模拟视频我们可以这样理解：视频可以分解为若干个基本视点（像素），每个像素都有独立的色彩信息，在屏幕上依次将 这些点用电子枪按照行和列打出来，就形成了一幅完整画面，连续的打出画面，利用人眼的延迟特点就可以“显示”动态的图像了。 水平消隐：电子枪从左到右画出象素，它每次只能画一条扫描线，画下一条之前要先回到左边并做好画下一条扫描线的准备，这之间有一段时间叫">
+<meta property="og:description" content="极限性能 echo performance | tee $(find &#x2F;sys |grep governor$)# 打开性能模式export KMSSINK_DISABLE_VSYNC&#x3D;1 #关闭vsyncecho 400000000 &gt; sys&#x2F;kernel&#x2F;debug&#x2F;clk&#x2F;aclk_rkvdec&#x2F;clk_rate">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-08T01:33:51.000Z">
-<meta property="article:modified_time" content="2023-03-08T12:25:18.032Z">
+<meta property="article:published_time" content="2023-05-13T08:39:22.000Z">
+<meta property="article:modified_time" content="2023-05-13T08:40:01.396Z">
 <meta property="article:author" content="Allen-zhi">
-<meta property="article:tag" content="display">
+<meta property="article:tag" content="video, gstreamer">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Lcdc - Maxwell&#39;s blog</title>
+  <title>gstreamer - Maxwell&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Lcdc"></span>
+            <span id="subtitle" data-typed-text="gstreamer"></span>
           
         </div>
 
@@ -227,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-08 09:33" pubdate>
-          2023年3月8日 上午
+        <time datetime="2023-05-13 16:39" pubdate>
+          2023年5月13日 下午
         </time>
       </span>
     
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          5.8k 字
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          17 分钟
+          49 分钟
         
       </span>
     
@@ -296,43 +296,40 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Lcdc</h1>
+            <h1 style="display: none">gstreamer</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Lcdc"><a href="#Lcdc" class="headerlink" title="Lcdc"></a>Lcdc</h2><p>数字视频的基本概念源自于模拟视频。对于模拟视频我们可以这样理解：视频可以分解为若干个基本视点（像素），每个像素都有独立的色彩信息，在屏幕上依次将 这些点用电子枪按照行和列打出来，就形成了一幅完整画面，连续的打出画面，利用人眼的延迟特点就可以“显示”动态的图像了。</p>
-<p>水平消隐：电子枪从左到右画出象素，它每次只能画一条扫描线，画下一条之前要先回到左边并做好画下一条扫描线的准备，这之间有一段时间叫做水平消隐（HBlank）。</p>
-<p>垂直消隐：在画完全部256条扫描线之后它又回到屏幕左上角准备下一次画屏幕（帧），这之间的一段时间就是垂直消隐（VBlank）。电子枪就是在不断的走‘之’字形。</p>
-<pre><code class="hljs">行同步（HSYNC）：行同步就是让电子枪控制器知道下面要开始新的一行像素
-场同步（VSYNC：  场同步就是告诉电子枪控制器下面要开始新的画面
-数据使能（DE）： 在数据使能区是有效的色彩数据，不在使能范围内的都显示黑色。
-前肩（Front Porch）/后肩 （Back Porch） ：行同步或场同步信号发出后，视频数据不能立即使能，要留出电子枪回扫的时间。以行扫描为例，从HSYNC结束到DE开始的区间成为行扫描的后肩（绿色区域），从DE结束到HSYNC开始称为前肩（紫色区域）。同样对于场扫面也可以由类似的定义。
-</code></pre>
-<p>Pixel clock：像素时脉(Pixel clock)指的是用来划分进来的影像水平线里的个别画素， Pixel clock 会将每一条水平线分成取样的样本，越高频率的 Pixel clock，每条扫瞄线会有越多的样本画素。<br>　 HFP: Horizon front porch</p>
-<p>　 HBP: Horizon back porch</p>
-<pre><code class="hljs">VFP: Vertical front porch
-
-VBP: Vertical back porch
-</code></pre>
-<p>　 HDP： Horizon display period</p>
-<pre><code class="hljs">VDP:  Vertical display period
-</code></pre>
-<p>HTP &#x3D; HSYNC + HDP + HFP + HBP</p>
-<p>VTR &#x3D; VSYNC + VDP + VFP + VBP</p>
-<p>f dot _ clk &#x3D; pixel clock<br>f dot _ clk &#x3D; f v * VTR * HTP<br>f v &#x3D; vertical frequency  (这个是频率，平时见到的很多时候是60HZ)</p>
-<p>pixel clock &#x3D; ()<br>制式          总扫描线       图像区域扫描线       水平总象素       图像区域水平象素       采样频率<br>1080I&#x2F;60Hz       1125       1080                      2200             1920            74.25MHz<br>1080I&#x2F;50Hz       1125       1080                      2640             1920            74.25MHz<br>720P&#x2F;60Hz       750         720                       1650             1280            74.25MHz<br>720P&#x2F;50Hz       750         720                       1980             1280            74.25MHz</p>
-<p>带宽：视频带宽代表显示器显示能力的一个综合指标，指每秒钟所扫描的图素个数，即单位时间内每条扫描线上显示的频点数总和，在模拟视频中以MHz为单位，图1的视频模拟带宽计算如下：，</p>
-<p>Analog BandWidth&#x3D;1650<em>750</em>60&#x3D;74.25MHz 含义为每个时钟要传输74.25M个模拟视频数据。所以720p60 的pclk为74.25Mhz,同理1080P60的P CLOCK为148.5MHz</p>
-<p>但是在数字视频中由于每个像素都是由3种不同的颜色来表示，每种颜色右由一定数量的比特来传输，因此通常会用bps来表示数字带宽，如果图1中使用了RGB传输，每种颜色用1个字节来输出，那么该视频的数字带宽为：<br>Digital BandWidth&#x3D; 模拟带宽<em>8bit</em>3&#x3D;1.782Gbps 含义为每秒要传输1.782G个比特数据</p>
-<h2 id="DSI-Clock"><a href="#DSI-Clock" class="headerlink" title="DSI Clock"></a>DSI Clock</h2><p>目前主流的lcd都是使用mipi总线，涉及到的一些clock在这里整理一下：</p>
-<p>H-total &#x3D; HorizontalActive + HorizontalFrontPorch + HorizontalBackPorch + HorizontalSyncPulse + HorizontalSyncSkew</p>
-<p>V-total &#x3D; VerticalActive + VerticalFrontPorch + VerticalBackPorch + VerticalSyncPulse + VerticalSyncSkew</p>
-<p>Total pixel &#x3D; H-total * V-total * 60(Hz通常都是这个，当然可以变).</p>
-<p>Bitclk &#x3D; Total pixel * bpp(byte) *8&#x2F;lane number(有几路mipi data lane).</p>
-<p>Byteclk &#x3D; bitclk&#x2F;8</p>
-<p>Dsipclk(Dsi pixel clock) &#x3D; (Byteclk * lane number)&#x2F;bpp(byte) &#x3D; Total pixel * 8</p>
-<p>Byteclk &#x3D; pclk * pixel depth &#x2F; lane number</p>
+                <p>极限性能</p>
+<p>echo performance | tee $(find &#x2F;sys |grep governor$)# 打开性能模式<br>export KMSSINK_DISABLE_VSYNC&#x3D;1 #关闭vsync<br>echo 400000000 &gt; sys&#x2F;kernel&#x2F;debug&#x2F;clk&#x2F;aclk_rkvdec&#x2F;clk_rate # 提高解码频率<br>echo 0x100 &gt; &#x2F;sys&#x2F;module&#x2F;rk_vcodec&#x2F;parameters&#x2F;mpp_dev_debug # 打开mpp解码时间</p>
+<p>sink方式</p>
+<p>可以通过<br>gst-inspect-1.0 kmssink<br>查询sink方式 支持的命令</p>
+<p>xvimagesink</p>
+<p>xvimagesink 需要有硬件加速<br>实现多屏：</p>
+<p>gst-play-1.0 –flags&#x3D;1 –gapless –videosink&#x3D;”xvimagesink render-rectangle&#x3D;&lt;0,0,360,210&gt;” test.mp4 &amp; gst-play-1.0 –flags&#x3D;1 –gapless –videosink&#x3D;”xvimagesink render-rectangle&#x3D;&lt;360,0,360,210&gt;” test.mp4<br>kmssink</p>
+<p>使用AFBC格式播放：<br>export GST_MPP_VIDEODEC_DEFAULT_ARM_AFBC&#x3D;1<br>GST_DEBUG&#x3D;fpsdisplaysink:5 gst-play-1.0 GUGUDAN-Wonderland.2160p.UHDTV.H265.ts –flags&#x3D;3 –use-playbin3 –videosink&#x3D;”fpsdisplaysink text-overlay&#x3D;false video-sink&#x3D;&quot;kmssink plane-id&#x3D;71&quot; sync&#x3D;false fps-update-interval&#x3D;10000 “<br>注：plane-id使用对应的cluster层<br>fpsdisplaysink 打开帧率打印<br>text-overlay&#x3D;false 关闭字幕</p>
+<p>普通播放：<br>gst-play-1.0 1.mp4 –flags&#x3D;3 –use-playbin3 –videosink&#x3D;kmssink plane-id&#x3D;65</p>
+<p>gst-play-1.0 oem&#x2F;SampleVideo_1280x720_5mb.mp4 –flags&#x3D;3 –videosink&#x3D;”kmssink connector-id&#x3D;154”<br>指定connector-id</p>
+<p>GST_DEBUG&#x3D;kmssink:5 gst-launch-1.0 v4l2src device&#x3D;&#x2F;dev&#x2F;video20 ! queue ! kmssink</p>
+<p>实现多屏：</p>
+<p>waylandsink</p>
+<p>防止丢帧：<br>配置文件增加 WAYLANDSINK_SYNC_FRAME<br>export GST_DEBUG&#x3D;<em>wayland</em>:10<br>gst-play-1.0 &#x2F;test.mp4 –videosink&#x3D;”waylandsink sync&#x3D;false” –a udiosink&#x3D;fakesink 2&gt;&amp;1|grep drop -i 0:00:00.724004250 1064 0x7f8c003060 LOG waylandsink gstwaylandsink.c:918:gst_wayland_sink_show_frame:<waylandsink0> buffer 0x7fa01b9890 dropped (redraw pending)<br>检查：源文件：buildroot&#x2F;output&#x2F;rockchip_px30_64&#x2F;build&#x2F;gst1-plugins-bad-1.14.4&#x2F;ext&#x2F;wayland# grep WAYLANDSINK_SYNC_FRAME * gstwaylandsink.c: if (g_getenv (“WAYLANDSINK_SYNC_FRAME”)) { 库：[root@rk3399:&#x2F;]# grep WAYLANDSINK_SYNC_FRAME &#x2F;usr&#x2F;lib&#x2F;gstreamer-1.0&#x2F;libgstwaylandsink.so WAYLANDSINK_SYNC_FRAME<br>实现多屏：</p>
+<p>v4l2src</p>
+<p>gst-launch-1.0 -v v4l2src ! ‘video&#x2F;x-raw,format&#x3D;NV12’ ! mpph264enc ! filesink location&#x3D;”bla.h264”</p>
+<p>gst-launch-1.0 v4l2src ! video&#x2F;x-raw,format&#x3D;NV12,width&#x3D;1920,height&#x3D;1080 ! rkximagesink<br>gst-launch-1.0 v4l2src ! video&#x2F;x-raw,format&#x3D;RGB3,width&#x3D;3840,height&#x3D;2160 ! rkximagesink</p>
+<p>gst-launch-1.0 v4l2src device&#x3D;&#x2F;dev&#x2F;video17 ! video&#x2F;x-raw,format&#x3D;RGB3,width&#x3D;1920, height&#x3D;1080 ! rkximagesink</p>
+<p>gst-launch-1.0 v4l2src device&#x3D;&#x2F;dev&#x2F;video20 ! queue ! kmssink</p>
+<p>零零碎碎</p>
+<p>videoscale是硬件加速，videocrop是软件。较新的gstreamer-rockchip的解码插件支持硬件crop和缩放，比如：<br>gst-launch-1.0 videotestsrc ! mpph264enc ! h264parse ! mppvideodec crop-rectangle&#x3D;’&lt;100,100,100,100&gt;’ width&#x3D;400 height&#x3D;400 ! waylandsink处理顺序是先缩放再裁减</p>
+<p>gstreamer里面的crop是可以通过crop meta进行in place处理，即直接传递裁减区域信息给最终sink端，由sink端处理裁减（kmssink的话是设置drm的src显示区域）。但是in place处理也需求videocrop直连sink。此外kmssink也支持直接配置目标显示区域render-rectangle进行硬件缩放，但是会受到高宽比限制。所以也可以：<br>buildroot更新到：<a target="_blank" rel="noopener" href="https://github.com/JeffyCN/rockchip_mirrors/commit/e7c6827a78434aac1aadf95d763bfc318c3b8e5c">https://github.com/JeffyCN/rockchip_mirrors/commit/e7c6827a78434aac1aadf95d763bfc318c3b8e5c</a><br>gst-launch-1.0 filesrc location&#x3D;&#x2F;FPS_test_1080p60_L4.2.mkv ! matroskademux ! decodebin ! videocrop top&#x3D;0 bottom&#x3D;0 left&#x3D;0 right&#x3D;960 ! kmssink render-rectangle&#x3D;’&lt;0,0,1920,1080&gt;’ force-aspect-ratio&#x3D;false</p>
+<p>jerkiness一般是指播放抖动（偶尔丢帧），卡顿是laggy，闪烁是blink和flick。</p>
+<p>硬件加速也是存在耗时的，如其他issue回复，产生耗时的plugin前后最好是加上缓冲队列queue进行异步</p>
+<p>确认硬件加速可以通过log开关：<br>export GST_DEBUG&#x3D;videoflip:5,video-converter:5<br>gst-launch-1.0 … ! videoscale ! video&#x2F;x-raw, width&#x3D;500, height&#x3D;500 ! …0:00:02.974151424 13319 0x3f640300 DEBUG video-converter video-converter.c:2862:video_converter_try_rga: converted with RGA</p>
+<p>[root@RK356X:&#x2F;]# GST_DEBUG&#x3D;mppdec:5 gst-launch-1.0 filesrc location&#x3D;&#x2F;test.mp4 ! qtdemux ! h264parse ! mppvideodec crop-rectangle&#x3D;’&lt;0,0,960,1080&gt;’ width&#x3D;3840 height&#x3D;1080 ! queue ! kmssink 2&gt;&amp;1|grep crop<br>0:00:01.271583086   778     0x3e9ebde0 DEBUG                 mppdec gstmppdec.c:688:gst_mpp_dec_get_gst_buffer:<mppvideodec0> cropping &lt;0,0,960,1080&gt; within &lt;0,0,3840,1080&gt;</p>
+<p>[root@RK356X:&#x2F;]# tail -10 &#x2F;sys&#x2F;kernel&#x2F;debug&#x2F;dri&#x2F;0&#x2F;summary<br>        win_id: 3<br>        format: NV12 little-endian (0x3231564e) SDR[0] color_space[0] glb_alpha[0xff<br>]<br>        rotate: xmirror: 0 ymirror: 0 rotate_90: 0 rotate_270: 0<br>        csc: y2r[1] r2y[0] csc mode[1]<br>        zpos: 3<br>        src: pos[0, 0] rect[960 x 1080] 《— crop到960<br>        dst: pos[480, 0] rect[960 x 1080]<br>        buf[0]: addr: 0x00000000040b1000 pitch: 3840 offset: 0 《— 3840<br>        buf[1]: addr: 0x00000000040b1000 pitch: 3840 offset: 4147200<br>Video Port1: DISABLED</p>
+<p>[root@rk3399:&#x2F;]# GST_DEBUG&#x3D;mppdec:5 gst-launch-1.0 filesrc location&#x3D;&#x2F;test.mp4 !qtdemux ! h264parse ! mppvideodec crop-rectangle&#x3D;’&lt;0,0,960,1080&gt;’ width&#x3D;3840 height&#x3D;1080 ! queue ! kmssink 2&gt;&amp;1|grep crop<br>0:00:01.085029657  1428      0x2fd6a40 DEBUG                 mppdec gstmppdec.c:678:gst_mpp_dec_get_gst_buffer:<mppvideodec0> cropping &lt;0,0,960,1080&gt; within &lt;0,0,3840,1080&gt;<br>[root@rk3399:&#x2F;]# cat &#x2F;sys&#x2F;kernel&#x2F;debug&#x2F;dri&#x2F;0&#x2F;summary<br>VOP [ff900000.vop]: ACTIVE<br>    Connector: HDMI-A<br>        overlay_mode[0] bus_format[100a] output_mode[f] color_space[0]<br>    Display mode: 1920x1080p60<br>        clk[148500] real_clk[148500] type[48] flag[5]<br>        H: 1920 2008 2052 2200<br>        V: 1080 1084 1089 1125<br>    win0-0: ACTIVE<br>        format: XR24 little-endian (0x34325258) SDR[0] color_space[0] 《—– 主图层<br>        csc: y2r[0] r2r[0] r2y[0] csc mode[0]<br>        zpos: 0<br>        src: pos[0x0] rect[1920x1080]<br>        dst: pos[0x0] rect[1920x1080]<br>        buf[0]: addr: 0x0000000008c2f000 pitch: 7680 offset: 0<br>    win1-0: ACTIVE<br>        format: NV12 little-endian (0x3231564e) SDR[0] color_space[0] 《—– 视频图层<br>        csc: y2r[1] r2r[0] r2y[0] csc mode[1]<br>        zpos: 1<br>        src: pos[0x0] rect[960x1080]              《—裁减到960x1080<br>        dst: pos[480x0] rect[960x1080]           《—–显示到480,0<br>        buf[0]: addr: 0x000000007e774000 pitch: 3840 offset: 0 《—- 原图是缩放到3840宽<br>        buf[1]: addr: 0x000000007e774000 pitch: 3840 offset: 4147200<br>参考文档</p>
+<p>参考文档：<br>博主文章 <a target="_blank" rel="noopener" href="http://blog.iotwrt.com/media/2017/11/17/gstreamer-study/">http://blog.iotwrt.com/media/2017/11/17/gstreamer-study/</a><br>官网 <a target="_blank" rel="noopener" href="https://gstreamer.freedesktop.org/documentation/opengl/?gi-language=c">https://gstreamer.freedesktop.org/documentation/opengl/?gi-language=c</a><br>gstreamer官网教程学习 <a target="_blank" rel="noopener" href="https://blog.csdn.net/u010168781/article/details/105750991">https://blog.csdn.net/u010168781/article/details/105750991</a><br>下载地址 git clone <a target="_blank" rel="noopener" href="https://gitlab.freedesktop.org/gstreamer/gstreamer.git">https://gitlab.freedesktop.org/gstreamer/gstreamer.git</a></p>
 
                 
               </div>
@@ -345,7 +342,7 @@ VBP: Vertical back porch
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/display/">#display</a>
+        <a href="/tags/video-gstreamer/">#video, gstreamer</a>
       
     </div>
   
@@ -357,8 +354,8 @@ VBP: Vertical back porch
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Lcdc</div>
-      <div>http://example.com/2023/03/08/Lcdc/</div>
+      <div>gstreamer</div>
+      <div>http://example.com/2023/05/13/gstreamer/</div>
     </div>
     <div class="license-meta">
       
@@ -370,7 +367,7 @@ VBP: Vertical back porch
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年3月8日</div>
+          <div>2023年5月13日</div>
         </div>
       
       
@@ -402,18 +399,12 @@ VBP: Vertical back porch
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/05/13/gstreamer/" title="gstreamer">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">gstreamer</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/10/%E5%BC%80%E7%AF%87%E8%AF%AD/" title="开篇语">
-                        <span class="hidden-mobile">开篇语</span>
+                      <a href="/2023/03/08/Lcdc/" title="Lcdc">
+                        <span class="hidden-mobile">Lcdc</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
