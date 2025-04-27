@@ -8,7 +8,7 @@
     <link href="/2025/04/27/20250427/"/>
     <url>/2025/04/27/20250427/</url>
     
-    <content type="html"><![CDATA[<h1 id="日记"><a href="#日记" class="headerlink" title="日记"></a>日记</h1><p>两年前，就想着要开始更新博客了，但就更新了几篇就停了。<br>现在想着，作为工程师，不留下点文档，供后人取经，会显着每天都在做无聊的工作、任务。（怎么文采这么烂啊，半天憋不出一个屁来）</p><h1 id="博客内容"><a href="#博客内容" class="headerlink" title="博客内容"></a>博客内容</h1><p>现在想到的博客内容，Linux kernel里面drm框架的实现，以及内核驱动的编写，内核驱动的debug过程。<br>介绍weston的框架，weston的送显逻辑，wayland协议。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="日记"><a href="#日记" class="headerlink" title="日记"></a>日记</h1><p>两年前，就想着要开始更新博客了，但就更新了几篇就停了。<br>现在想着，作为工程师，不留下点文档，供后人取经，会显着每天都在做无聊的工作、任务。（怎么文采这么烂啊，半天憋不出一个屁来）<br>写写文档也是提高自己文字表达能力的开始</p><h1 id="博客内容"><a href="#博客内容" class="headerlink" title="博客内容"></a>博客内容</h1><p>现在想到的博客内容，Linux kernel里面drm框架的实现，以及内核驱动的编写，内核驱动的debug过程。<br>介绍weston的框架，weston的送显逻辑，wayland协议。</p>]]></content>
     
     
     
